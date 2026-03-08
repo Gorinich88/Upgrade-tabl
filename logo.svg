@@ -8,9 +8,9 @@
       .wing-yellow { fill: #FFD700; } /* Жовтий (UA flag) */
       
       /* ТЕКСТ ТА ЛІТЕРА 'U': Якщо фон сайту світлий, змініть fill: #FFFFFF на #000000 */
-      .letter-u { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 120px; text-anchor: middle; }
-      .text-upgrade { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; text-anchor: middle; letter-spacing: 2px; }
-      .text-circus { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; text-anchor: middle; letter-spacing: 1px; }
+      .letter-u { fill:rgb(14, 6, 6); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 120px; text-anchor: middle; }
+      .text-upgrade { fill:rgb(10, 4, 4); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; text-anchor: middle; letter-spacing: 2px; }
+      .text-circus { fill:rgb(11, 7, 7); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; text-anchor: middle; letter-spacing: 1px; }
     </style>
   </defs>
 
