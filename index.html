@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade Circus Studio - Перевірка абонемента</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #333; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { background-color: #ff4757; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        button:hover { background-color: #e84118; }
+        #result { margin-top: 25px; text-align: left; display: none; padding: 15px; border-radius: 10px; background: #f9f9f9; border-left: 5px solid #ff4757; }
+        .info-row { margin-bottom: 10px; font-size: 15px; color: #555; }
+        .info-value { font-weight: bold; color: #000; float: right; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <img src="https://via.placeholder.com/100?text=UPGRADE" alt="Logo" style="width:80px; margin-bottom:10px;">
+    <h2>Перевірка абонемента</h2>
+    <p style="font-size: 14px; color: #666;">Введіть Прізвище та Ім'я дитини як у журналі</p>
+    
+    <input type="text" id="studentName" placeholder="Наприклад: Іванов Максим">
+    <button onclick="checkAttendance()">ПЕРЕВІРИТИ</button>
+
+    <div id="result">
+        <div class="info-row">Учень: <span id="resName" class="info-value"></span></div>
+        <hr style="border: 0.5px solid #eee;">
+        <div class="info-row">Залишок занять: <span id="resLessons" class="info-value"></span></div>
+        <div class="info-row">Днів до оплати: <span id="resDays" class="info-value"></span></div>
+        <div class="info-row">Статус: <span id="resStatus" class="info-value"></span></div>
+    </div>
+</div>
+
+<script>
+    // ВСТАВТЕ ВАШЕ ПОСИЛАННЯ НА CSV НИЖЧЕ
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQIqZs21ssEiom5ND7p-1gpHY11e5MU1I7wGAfa6OFISmMLYwsxLo20vLVHjSev4HSCnVOSCJVQp0nA/pub?output=csv';
+
+    async function checkAttendance() {
+        const inputName = document.getElementById('studentName').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('result');
+
+        if (!inputName) { alert('Будь ласка, введіть ім’я'); return; }
+
+        try {
+            const response = await fetch(csvUrl);
+            const data = await response.text();
+            const rows = data.split('\n').slice(1); // Пропускаємо заголовок
+
+            let found = false;
+            rows.forEach(row => {
+                const cols = row.split(',');
+                if (cols[0] && cols[0].trim().toLowerCase() === inputName) {
+                    document.getElementById('resName').innerText = cols[0];
+                    document.getElementById('resLessons').innerText = cols[1];
+                    document.getElementById('resDays').innerText = cols[2];
+                    document.getElementById('resStatus').innerText = cols[3];
+                    resultDiv.style.display = 'block';
+                    found = true;
+                }
+            });
+
+            if (!found) { alert('Учня не знайдено. Перевірте правильність написання.'); }
+        } catch (error) {
+            console.error('Помилка завантаження даних:', error);
+            alert('Помилка зв’язку з базою даних.');
+        }
+    }
+</script>
+
+</body>
+</html>
