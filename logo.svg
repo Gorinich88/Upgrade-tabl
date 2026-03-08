@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&amp;display=swap');
+      
+      .wing-blue { fill: #00BFFF; } /* Колір синьої частини крил */
+      .wing-yellow { fill: #FFD700; } /* Колір жовтої частини крил */
+      .letter-u { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 120px; text-anchor: middle; } /* Стиль літери 'U' */
+      .text-upgrade { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; text-anchor: middle; letter-spacing: 2px; } /* Стиль 'UPGRADE' */
+      .text-circus { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; text-anchor: middle; letter-spacing: 1px; } /* Стиль 'CIRCUS STUDIO' */
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#000000"/>
+
+  <g transform="translate(200, 100)">
+    <path class="wing-blue" d="M-50,0 C-120,-30 -160,-10 -180,20 L-150,50 C-130,30 -90,20 -50,0 Z"/>
+    <path class="wing-yellow" d="M-50,0 C-90,20 -130,30 -150,50 L-120,80 C-100,60 -60,40 -50,0 Z"/>
+    <path class="wing-blue" d="M50,0 C120,-30 160,-10 180,20 L150,50 C130,30 90,20 50,0 Z"/>
+    <path class="wing-yellow" d="M50,0 C90,20 130,30 150,50 L120,80 C100,60 60,40 50,0 Z"/>
+  </g>
+
+  <text x="200" y="140" class="letter-u">U</text>
+
+  <text x="200" y="210" class="text-upgrade">UPGRADE</text>
+  <text x="200" y="250" class="text-circus">CIRCUS STUDIO</text>
+</svg>
