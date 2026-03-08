@@ -39,6 +39,12 @@
     // ВСТАВТЕ ВАШЕ ПОСИЛАННЯ НА CSV НИЖЧЕ
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQIqZs21ssEiom5ND7p-1gpHY11e5MU1I7wGAfa6OFISmMLYwsxLo20vLVHjSev4HSCnVOSCJVQp0nA/pub?output=csv';
 
+    // Додаємо прослуховування натискання клавіш у полі вводу
+document.getElementById('studentName').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        checkAttendance(); // Викликаємо функцію пошуку, якщо натиснуто Enter
+    }
+});
     async function checkAttendance() {
         const inputName = document.getElementById('studentName').value.trim().toLowerCase();
         const resultDiv = document.getElementById('result');
